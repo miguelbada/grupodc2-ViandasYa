@@ -1,18 +1,22 @@
 package model;
 
-public class Proveedor {
-    private String nombre;
+import java.util.ArrayList;
+
+public class Proveedor extends Usuario{
+    ArrayList<Servicio> servicios;
 
     public Proveedor(String nombre) {
-        this.nombre = nombre;
+        super(nombre);
+    }
+    public  ArrayList<Servicio> getServicios(){
+        return  this.servicios;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setServicios(ArrayList<Servicio> services){
+        this.servicios = services;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-
+    public  void darDeAltaUnServicio(Servicio servicio){
+        this.servicios.add(servicio);
     }
 }
