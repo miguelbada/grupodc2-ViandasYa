@@ -1,7 +1,10 @@
 package model;
 
+import model.Utils.FechaVigencia;
+
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Menu {
@@ -9,7 +12,7 @@ public class Menu {
     String descripcion;
     String categoria;
     int valorDelirevy;
-    Map<Date,Date> fechasVigencias;
+    FechaVigencia fechasVigencias;
     ArrayList<Date> horariosDeENtrega;
     int tiemporEntregaPromedio;
     int precio;
@@ -26,7 +29,111 @@ public class Menu {
 */
     public Menu(String name){
         this.nombre = name;
+        this.horariosDeENtrega = new ArrayList<Date>();
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getValorDelirevy() {
+        return valorDelirevy;
+    }
+
+    public void setValorDelirevy(int valorDelirevy) {
+        this.valorDelirevy = valorDelirevy;
+    }
+
+    public FechaVigencia getFechasVigencias() {
+        return fechasVigencias;
+    }
+
+    public void setFechasVigencias(FechaVigencia fechasVigencias) {
+        this.fechasVigencias = fechasVigencias;
+    }
+
+    public ArrayList<Date> getHorariosDeENtrega() {
+        return horariosDeENtrega;
+    }
+
+    public void setHorariosDeENtrega(ArrayList<Date> horariosDeENtrega) {
+        this.horariosDeENtrega = horariosDeENtrega;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getCantidadMaxVentasXDia() {
+        return cantidadMaxVentasXDia;
+    }
+
+    public void setCantidadMaxVentasXDia(int cantidadMaxVentasXDia) {
+        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
+    }
+
+    public int getCantidadMin() {
+        return cantidadMin;
+    }
+
+    public void setCantidadMin(int cantidadMin) {
+        this.cantidadMin = cantidadMin;
+    }
+
+    public int getCantMin2() {
+        return cantMin2;
+    }
+
+    public void setCantMin2(int cantMin2) {
+        this.cantMin2 = cantMin2;
+    }
+
+    public int getTiemporEntregaPromedio() {
+        return tiemporEntregaPromedio;
+    }
+
+    public void setTiemporEntregaPromedio(int tiemporEntregaPromedio) {
+        this.tiemporEntregaPromedio = tiemporEntregaPromedio;
+    }
+
+    public int getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public int getPrecioCantMin() {
+        return precioCantMin;
+    }
+
+    public void setPrecioCantMin(int precioCantMin) {
+        this.precioCantMin = precioCantMin;
+    }
+
+    public int getPrecioCantMin2() {
+        return precioCantMin2;
+    }
+
+    public void setPrecioCantMin2(int precioCantMin2) {
+        this.precioCantMin2 = precioCantMin2;
+    }
 }
+

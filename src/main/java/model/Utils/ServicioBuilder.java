@@ -5,6 +5,7 @@ import model.Servicio;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class ServicioBuilder {
@@ -23,9 +24,9 @@ public class ServicioBuilder {
     private String  dirWeb = "no dirweb";
     private String  email = "no email";
     private int  telefono = 0;
-    private   Map<Map<Date,Date>,String> horariosYDias = null;
-    private ArrayList<String> localidadDeEntregas = null;
-    private ArrayList<Menu> menues = null;
+    private   Map<Date,String> horariosYDias = new HashMap<Date, String>();
+    private ArrayList<String> localidadDeEntregas = new ArrayList<String>();
+    private ArrayList<Menu> menues = new ArrayList<Menu>();
 
 
     public Servicio build() {

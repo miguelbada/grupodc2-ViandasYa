@@ -2,12 +2,7 @@ package model;
 
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-
-
-import java.util.Date;
-import java.util.Map;
+import java.util.*;
 
 public class Servicio {
 
@@ -20,13 +15,16 @@ public class Servicio {
     String dirWeb;
     String email;
     int telefono;
-    Map<Map<Date,Date>,String> horariosYDias;
+    Map<Date,String> horariosYDias;
     ArrayList<String> localidadDeEntregas;
     ArrayList<Menu> menues;
 
 
     public  Servicio(String name){
         this.nombre = name;
+        this.menues = new ArrayList<Menu>();
+        this.localidadDeEntregas = new ArrayList<String>();
+        this.horariosYDias = new HashMap<Date,String>();
     }
 
     public String getNombre(){
@@ -93,11 +91,11 @@ public class Servicio {
         this.localidadDeEntregas = localidadDeEntregas;
     }
 
-    public Map<Map<Date, Date>, String> getHorariosYDias() {
+    public Map<Date, String> getHorariosYDias() {
         return horariosYDias;
     }
 
-    public void setHorariosYDias(Map<Map<Date, Date>, String> horariosYDias) {
+    public void setHorariosYDias(Map<Date, String> horariosYDias) {
         this.horariosYDias = horariosYDias;
     }
 
@@ -116,4 +114,32 @@ public class Servicio {
     public void setUbicacion(String ubicacion) {
         this.ubicacion = ubicacion;
     }
+
+    public void agregarMenu(Menu menuAAgregar){
+
+        this.menues.add(menuAAgregar);
+    }
+
+    public void eliminarMenu(Menu menuAEliminar){
+        /* recorro los menues y solo dejo aquellos que no sean el "menuAEliminar"*/
+        ArrayList<Menu> newMenues = new ArrayList<Menu>();
+        for (Menu n : this.getMenues()){
+            if(!n.getNombre().equals(menuAEliminar.getNombre())){
+                newMenues.add(n);
+            }
+        }
+        setMenues(newMenues);
+    }
+
+    public Integer getCantMenuesVigentes(){
+        int contador = 0;
+        for (Menu m: getMenues()){
+            Date menuFechaH = m.getFechasVigencias().getFechaHasta();
+            if(menuFechaH.after( new Date())){
+               contador++;
+            }
+        }
+        return contador;
+    }
+
 }
