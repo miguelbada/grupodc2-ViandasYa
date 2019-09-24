@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Menu {
-    
+
     String nombre;
     String descripcion;
     String categoria;
