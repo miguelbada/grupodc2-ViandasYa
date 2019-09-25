@@ -1,15 +1,28 @@
 package model;
 
+import model.Exceptions.ValidacionException;
+
+import java.util.ArrayList;
+import java.util.Date;
+
 public class Usuario {
 
     String nombreYApellido;
     String eMail;
     int telefono;
     String localidadDIreccion;
-    int credito;
+    Cuenta cUentaUsuario;
 
     public  Usuario(String name){
+
         this.nombreYApellido = name;
+        this.cUentaUsuario = new Cuenta();
+    }
+
+    public  enum TiposDeEntrega
+    {
+        RETIRAR,
+        DOMICILIO
     }
 
     public  void setNombreYApellido(String  name){
@@ -46,10 +59,46 @@ public class Usuario {
     }
 
     public void setCredito(int credito) {
-        this.credito = credito;
+        this.cUentaUsuario.setCredito(credito);
     }
 
     public int getCredito() {
-        return credito;
+        return this.cUentaUsuario.getCredito();
     }
+
+    public Cuenta getcUentaUsuario() {
+        return cUentaUsuario;
+    }
+
+    public void setcUentaUsuario(Cuenta cUentaUsuario) {
+        this.cUentaUsuario = cUentaUsuario;
+    }
+
+    public void cargarDinero(int creditoACargar){
+        setCredito(getCredito()+ creditoACargar);
+    }
+
+    public void retirarCredito(int creditoASacar){
+        if(getCredito()> creditoASacar){
+            setCredito(getCredito()-creditoASacar);
+        }
+    }
+
+    public Pedido hacerPedido(ArrayList<Menu> menuSeleccionado, int cantidad, TiposDeEntrega t, Date fechaEntrega, int horaEntrega) throws ValidacionException {
+
+        if(fechaDeEntregaValida(fechaEntrega)){
+            return Pedido.generarPedido(menuSeleccionado,cantidad,t,fechaEntrega,horaEntrega);
+        }else
+        {
+            throw  new ValidacionException("El pedido tiene que ser 48 horas antes de la fecha de entraga");
+        }
+    }
+
+    public Boolean fechaDeEntregaValida(Date fecha){
+        Date fechaHoy = new Date();
+        int cantDias = fecha.getDay() - fechaHoy.getDay();
+        return (cantDias <=2 )? true: false;
+
+    }
+
 }

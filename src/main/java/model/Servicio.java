@@ -2,6 +2,8 @@ package model;
 
 
 
+import model.Exceptions.ValidacionException;
+
 import java.util.*;
 
 public class Servicio {
@@ -140,6 +142,15 @@ public class Servicio {
             }
         }
         return contador;
+    }
+
+    public void actualizarMenu(Menu menuUpdate) {
+
+        for (Menu m : getMenues()){
+            if(m.getNombre().equals(menuUpdate.getNombre())){
+                m.actualizarDatos(menuUpdate);
+            }
+        }
     }
 
 }

@@ -23,7 +23,7 @@ public class ProveedorTest {
     Menu menuTest;
 
     @Before
-    public void SetUp(){
+    public void SetUp()  {
         proveedorTest =  ProveedorBuilder.aProveedor().withName("Mcdonals")
                 .withEMail("Mcdonals@tuMc.com.ar")
                 .withLocalidad("Florencio Varela")
@@ -86,9 +86,33 @@ public class ProveedorTest {
         assertEquals(serviceTest.getMenues().size(),1);
         assertEquals(serviceTest.getMenues().get(0).getNombre(),"Menu test");
 
+
         proveedorTest.eliminarMenu(serviceTest.getNombre(), menuTest);
 
         assertEquals(serviceTest.getMenues().size(),0);
+
+    }
+
+    @Test
+    public void unProveedorActualizaUnMenuVigente()throws ValidacionException{
+        proveedorTest.darDeAltaUnServicio(serviceTest);
+
+        proveedorTest.generarMenu(serviceTest.getNombre(), menuTest);
+        assertEquals(serviceTest.getMenues().size(),1);
+        assertEquals(serviceTest.getMenues().get(0).getNombre(),"Menu test");
+        assertEquals(serviceTest.getMenues().get(0).getDescripcion(),"Test menu");
+
+        Menu menuUpdate = MenuBuilder.aMenu().withName("Menu test")
+                .withPrecio(15)
+                .withCategoria("Pizza")
+                .withDescripcion("Test menu actualizado")
+                .withValorDelirevy(21)
+                .withCantidadMin(10)
+                .withCantMin2(24)
+                .withCantidadMaxVentasXDia(59)
+                .build();
+        proveedorTest.actualizarMenu(serviceTest.getNombre(), menuUpdate );
+        assertEquals(serviceTest.getMenues().get(0).getDescripcion(),"Test menu actualizado");
 
     }
 
@@ -121,5 +145,24 @@ public class ProveedorTest {
 
     }
 
-    
+    @Test
+    public void unProveedorRetiraDineroDeSuCuenta(){
+        assertEquals(proveedorTest.getCredito(), 100);
+
+        proveedorTest.retirarCredito(20);
+        assertEquals(proveedorTest.getCredito(), 80);
+    }
+
+    @Test
+    public void unProveedorIntentaRetirarMasCreditoDelQueTieneEnSuCuenta(){
+
+        assertEquals(proveedorTest.getCredito(), 100);
+
+        proveedorTest.retirarCredito(120);
+        /*como no hay credito suficiente no se permitio retirar dinero*/
+        assertEquals(proveedorTest.getCredito(), 100);
+    }
+
+
+
 }

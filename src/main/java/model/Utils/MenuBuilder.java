@@ -1,5 +1,6 @@
 package model.Utils;
 
+import model.Exceptions.ValidacionException;
 import model.Menu;
 
 import java.util.ArrayList;

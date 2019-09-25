@@ -1,5 +1,6 @@
 package model;
 
+import model.Exceptions.ValidacionException;
 import model.Utils.FechaVigencia;
 
 import java.util.ArrayList;
@@ -126,15 +127,35 @@ public class Menu {
     }
 
     public void setPrecioCantMin(int precioCantMin) {
-        this.precioCantMin = precioCantMin;
+        if(precioCantMin < precio){
+            this.precioCantMin = precioCantMin;
+        }
     }
 
     public int getPrecioCantMin2() {
         return precioCantMin2;
     }
 
-    public void setPrecioCantMin2(int precioCantMin2) {
-        this.precioCantMin2 = precioCantMin2;
+    public void setPrecioCantMin2(int precioCantMin2)  {
+        if(precioCantMin2 < precioCantMin){
+            this.precioCantMin2 = precioCantMin2;
+        }
+    }
+
+    public  void actualizarDatos(Menu menuUpdate){
+        setDescripcion(menuUpdate.getDescripcion());
+        setFechasVigencias(menuUpdate.getFechasVigencias());
+        setValorDelirevy(menuUpdate.getValorDelirevy());
+        setTiemporEntregaPromedio(menuUpdate.getTiemporEntregaPromedio());
+        setPrecioCantMin2(menuUpdate.getPrecioCantMin2());
+        setPrecioCantMin(menuUpdate.getPrecioCantMin());
+        setPrecio(menuUpdate.getPrecio());
+        setHorariosDeENtrega(menuUpdate.getHorariosDeENtrega());
+        setCategoria(menuUpdate.getCategoria());
+        setCantMin2(menuUpdate.getCantMin2());
+        setCantidadMin(menuUpdate.getCantidadMin());
+        setCantidadMaxVentasXDia(menuUpdate.getCantidadMaxVentasXDia());
+        setNombre(menuUpdate.getNombre());
     }
 }
 

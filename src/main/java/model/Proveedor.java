@@ -66,6 +66,13 @@ public class Proveedor extends Usuario{
 
     }
 
+    public void actualizarMenu(String serviceName, Menu menuUpdate) throws ValidacionException {
+        /* elimino un menu de un determinado servicio */
+        Servicio service = obtenerServicioEnParticular(serviceName);
+        service.actualizarMenu(menuUpdate);
+
+    }
+
 
 
 
