@@ -1,4 +1,4 @@
-package desappgroupd.grupodc2;
+package desappgroupd;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

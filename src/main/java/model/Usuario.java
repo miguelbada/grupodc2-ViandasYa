@@ -1,5 +1,6 @@
 package model;
 
+import desappgroupd.Menu;
 import model.Exceptions.ValidacionException;
 
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class Usuario {
             return Pedido.generarPedido(menuSeleccionado,cantidad,t,fechaEntrega,horaEntrega);
         }else
         {
-            throw  new ValidacionException("El pedido tiene que ser 48 horas antes de la fecha de entraga");
+            throw  new ValidacionException("El pedido tiene que ser 48 horas antes de la fecha de entrega");
         }
     }
 

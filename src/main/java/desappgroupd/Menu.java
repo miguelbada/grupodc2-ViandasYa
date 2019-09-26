@@ -1,37 +1,56 @@
-package model;
+package desappgroupd;
 
-import model.Exceptions.ValidacionException;
-import model.Utils.FechaVigencia;
-
+import javax.persistence.*;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
+@Entity
 public class Menu {
 
-    String nombre;
-    String descripcion;
-    String categoria;
-    int valorDelirevy;
-    FechaVigencia fechasVigencias;
-    ArrayList<Date> horariosDeENtrega;
-    int tiemporEntregaPromedio;
-    int precio;
-    int cantidadMin;
-    int precioCantMin;
-    int cantMin2; //Opcional
-    int precioCantMin2; // Opcional
-    int cantidadMaxVentasXDia;
+    @Id
+    private String nombre;
+
+    private String descripcion;
+    private String categoria;
+    private int valorDelirevy;
+
+    @OneToOne(cascade= CascadeType.ALL)
+    private FechaVigencia fechasVigencias;
+
+    private ArrayList<Date> horariosDeENtrega;
+    private int tiemporEntregaPromedio;
+    private int precio;
+    private int cantidadMin;
+    private int precioCantMin;
+    private int cantMin2; //Opcional
+    private int precioCantMin2; // Opcional
+    private int cantidadMaxVentasXDia;
 
 /*
 * Las cantidades mínimas deberán ser  mutuamente excluyentes entre los 2 segmentos.
 *  El precio *Min2 debe ser menor que *Min1 y este debe ser menor a Precio.
 * No se permiten mas ventas que la cantidad máxima.
 */
+    public Menu() {
+
+    }
+
     public Menu(String name){
         this.nombre = name;
         this.horariosDeENtrega = new ArrayList<Date>();
+    }
+
+    public Menu(String name, int cantMin2, int cantidadMaxVentasXDia , int cantidadMin, int precio, int precioCantMin, int precioCantMin2, int tiemporEntregaPromedio, int valorDelirevy) {
+        this.nombre = name;
+        this.cantMin2 = cantMin2;
+        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
+        this.cantidadMin = cantidadMin;
+        this.precio = precio;
+        this.precioCantMin = precioCantMin;
+        this.precioCantMin2 = precioCantMin2;
+        this.tiemporEntregaPromedio = tiemporEntregaPromedio;
+        this.valorDelirevy = valorDelirevy;
     }
 
     public String getDescripcion() {

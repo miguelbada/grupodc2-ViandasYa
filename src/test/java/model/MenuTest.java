@@ -1,6 +1,6 @@
 package model;
 
-import model.Exceptions.ValidacionException;
+import desappgroupd.Menu;
 import model.Utils.MenuBuilder;
 import org.junit.Test;
 

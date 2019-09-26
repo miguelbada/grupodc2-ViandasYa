@@ -1,4 +1,4 @@
-package desappgroupd.grupodc2;
+package desappgroupd;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
