@@ -15,7 +15,7 @@ public class MenuServiceImp implements MenuService {
     private MenuRepository menuRepository;
 
     @Override
-    public void crearMenu(Menu menu) {
+    public void addMenu(Menu menu) {
         menuRepository.save(menu);
     }
 

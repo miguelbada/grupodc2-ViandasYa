@@ -1,0 +1,20 @@
+---------------------------------------------------------------------
+TAG 1.0 -- Entrega 1
+---------------------------------------------------------------------
+NEW FEATURES:
+* Modelo testeado.
+* Se persiste con Hibernate la clase Menu.
+* Endpoint "/menues", muestra una lista de menues cargados en el sistema.
+
+
+NOTES:
+* Falta integrar Google Maps.
+* Se debe implementar las busquedas de los menues, por nombre (%x%), por categoria y por localidad.
+* Se debe ordenar los resultados de las busquedas por precio (min/max) y por puntuacion (min/max).
+* Falta implementar las puntuaciones de los clientes cuando se efectua la compra de un menu.
+* Se debe realizar la baja de menu o de proveedor por puntuaciones bajas.
+* Falta las transacciones cuando se efectua la compra.
+
+KNOWN ISSUES:
+* La integracion de codacy con travis esta andando mal, no reporta el porcentaje de covertura de los test.
+* Heroku esta dando un error y no muestra la pagina.

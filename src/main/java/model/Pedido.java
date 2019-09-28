@@ -1,7 +1,6 @@
 package model;
 
 import desappgroupd.Menu;
-
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -102,12 +101,8 @@ public class Pedido {
     }
 
     public static int obtenerPrecio(ArrayList<Menu> ms){
-        int preciofinal = 0;
-        for( Menu m: ms){
-            preciofinal +=m.getPrecio();
-        }
 
-        return preciofinal;
+        return ms.stream().mapToInt(Menu::getPrecio).sum();
     }
 
 }

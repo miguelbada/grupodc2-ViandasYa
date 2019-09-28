@@ -74,4 +74,5 @@ public class ClienteTest {
         Pedido pedido =  userTest.hacerPedido(menus,2, Usuario.TiposDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
         assertEquals(pedido.precioFinal,15 );
     }
+
 }

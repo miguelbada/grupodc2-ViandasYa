@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import percistence.service.MenuService;
 
+import java.util.List;
+
 @SpringBootApplication(scanBasePackageClasses = {MenuController.class, Saludo.class, MenuService.class})
 public class Grupodc2Application implements CommandLineRunner {
 
@@ -21,8 +23,11 @@ public class Grupodc2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Menu menu1 = new DataLoader().getMenu1();
+        List<Menu> menues = new DataLoader().getMenues();
 
-        menuService.crearMenu(menu1);
+        for(Menu menu: menues) {
+            menuService.addMenu(menu);
+        }
+
     }
 }
