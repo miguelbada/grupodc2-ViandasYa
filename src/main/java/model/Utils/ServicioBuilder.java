@@ -1,7 +1,7 @@
 package model.Utils;
 
 import desappgroupd.Menu;
-import model.Servicio;
+import desappgroupd.Servicio;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,9 +37,9 @@ public class ServicioBuilder {
         servicio.setDirWeb(dirWeb);
         servicio.setEmail(email);
         servicio.setHorariosYDias(horariosYDias);
-        servicio.setlOcalidad(lOcalidad);
+        servicio.setLocalidad(lOcalidad);
         servicio.setLocalidadDeEntregas(localidadDeEntregas);
-        servicio.setMenues(menues);
+        servicio.setMenus(menues);
         servicio.setTelefono(telefono);
         servicio.setUbicacion(ubicacion);
         return servicio;

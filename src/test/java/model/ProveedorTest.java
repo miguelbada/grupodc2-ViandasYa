@@ -1,6 +1,7 @@
 package model;
 
 import desappgroupd.Menu;
+import desappgroupd.Servicio;
 import model.Exceptions.ValidacionException;
 import desappgroupd.FechaVigencia;
 import model.Utils.MenuBuilder;
@@ -71,8 +72,8 @@ public class ProveedorTest {
         assertEquals(proveedorTest.getServicios().size(), 1);
         assertEquals(proveedorTest.getServicios().get(0).getNombre(),"ServicioTest" );
 
-        assertEquals(serviceTest.getMenues().size(),1);
-        assertEquals(serviceTest.getMenues().get(0).getNombre(),"Menu test");
+        assertEquals(serviceTest.getMenus().size(),1);
+        assertEquals(serviceTest.getMenus().get(0).getNombre(),"Menu test");
 
 
     }
@@ -82,13 +83,13 @@ public class ProveedorTest {
         proveedorTest.darDeAltaUnServicio(serviceTest);
 
         proveedorTest.generarMenu(serviceTest.getNombre(), menuTest);
-        assertEquals(serviceTest.getMenues().size(),1);
-        assertEquals(serviceTest.getMenues().get(0).getNombre(),"Menu test");
+        assertEquals(serviceTest.getMenus().size(),1);
+        assertEquals(serviceTest.getMenus().get(0).getNombre(),"Menu test");
 
 
         proveedorTest.eliminarMenu(serviceTest.getNombre(), menuTest);
 
-        assertEquals(serviceTest.getMenues().size(),0);
+        assertEquals(serviceTest.getMenus().size(),0);
 
     }
 
@@ -97,9 +98,9 @@ public class ProveedorTest {
         proveedorTest.darDeAltaUnServicio(serviceTest);
 
         proveedorTest.generarMenu(serviceTest.getNombre(), menuTest);
-        assertEquals(serviceTest.getMenues().size(),1);
-        assertEquals(serviceTest.getMenues().get(0).getNombre(),"Menu test");
-        assertEquals(serviceTest.getMenues().get(0).getDescripcion(),"Test menu");
+        assertEquals(serviceTest.getMenus().size(),1);
+        assertEquals(serviceTest.getMenus().get(0).getNombre(),"Menu test");
+        assertEquals(serviceTest.getMenus().get(0).getDescripcion(),"Test menu");
 
         Menu menuUpdate = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
@@ -111,7 +112,7 @@ public class ProveedorTest {
                 .withCantidadMaxVentasXDia(59)
                 .build();
         proveedorTest.actualizarMenu(serviceTest.getNombre(), menuUpdate );
-        assertEquals(serviceTest.getMenues().get(0).getDescripcion(),"Test menu actualizado");
+        assertEquals(serviceTest.getMenus().get(0).getDescripcion(),"Test menu actualizado");
 
     }
 
@@ -129,17 +130,17 @@ public class ProveedorTest {
         menues.add(menu1); menues.add(menu1); menues.add(menu1);
         menues.add(menu1); menues.add(menu1); menues.add(menu1);
         menues.add(menu1); menues.add(menu1);
-        serviceTest.setMenues(menues);
+        serviceTest.setMenus(menues);
         proveedorTest.darDeAltaUnServicio(serviceTest);
 
-        assertEquals(serviceTest.getMenues().size(),20);
+        assertEquals(serviceTest.getMenus().size(),20);
 
         Menu menu21 = MenuBuilder.aMenu().withName("menu21")
                 .withFechasVigencias(new FechaVigencia(new Date(2019,05,12),new Date(2019,12,25)))
                 .build();
 
         proveedorTest.generarMenu(serviceTest.getNombre(), menu21);
-        assertEquals(serviceTest.getMenues().size(),20);
+        assertEquals(serviceTest.getMenus().size(),20);
         /* SE TESTEA LA ESXCEPCION*/
 
     }

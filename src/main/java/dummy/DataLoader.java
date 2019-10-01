@@ -1,15 +1,16 @@
 package dummy;
 
 import desappgroupd.Menu;
+import desappgroupd.Servicio;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class DataLoader {
-    private List<Menu> menues;
+    private List<Menu> menus;
 
     public DataLoader() {
-        this.menues = new ArrayList<Menu>();
+        this.menus = new ArrayList<Menu>();
         this.generarMenues();
     }
 
@@ -18,13 +19,19 @@ public class DataLoader {
         Menu menu2 = new Menu("Combo nuggets",2 ,500, 1, 300, 300, 300,30, 50);
         Menu menu3 = new Menu("Combo mega Napolitano XL",2 ,500, 1, 340, 340, 340,30, 50);
 
-        this.menues.add(menu1);
-        this.menues.add(menu2);
-        this.menues.add(menu3);
+        Servicio servicio = new Servicio("MC");
+
+        menu1.setServicio(servicio);
+        menu2.setServicio(servicio);
+        menu3.setServicio(servicio);
+
+        this.menus.add(menu1);
+        this.menus.add(menu2);
+        this.menus.add(menu3);
     }
 
-    public List<Menu> getMenues() {
-        return this.menues;
+    public List<Menu> getMenus() {
+        return this.menus;
     }
 
 }

@@ -1,7 +1,7 @@
 package model.Utils;
 
 import model.Proveedor;
-import model.Servicio;
+import desappgroupd.Servicio;
 
 import java.util.ArrayList;
 

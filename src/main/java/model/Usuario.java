@@ -2,6 +2,7 @@ package model;
 
 import desappgroupd.Menu;
 import model.Exceptions.ValidacionException;
+import model.Utils.TipoDeEntrega;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -18,12 +19,6 @@ public class Usuario {
 
         this.nombreYApellido = name;
         this.cUentaUsuario = new Cuenta();
-    }
-
-    public  enum TiposDeEntrega
-    {
-        RETIRAR,
-        DOMICILIO
     }
 
     public  void setNombreYApellido(String  name){
@@ -85,10 +80,12 @@ public class Usuario {
         }
     }
 
-    public Pedido hacerPedido(ArrayList<Menu> menuSeleccionado, int cantidad, TiposDeEntrega t, Date fechaEntrega, int horaEntrega) throws ValidacionException {
+    public Pedido hacerPedido(Menu menuSeleccionado, int cantidad, TipoDeEntrega t, Date fechaEntrega, int horaEntrega) throws ValidacionException {
 
         if(fechaDeEntregaValida(fechaEntrega)){
-            return Pedido.generarPedido(menuSeleccionado,cantidad,t,fechaEntrega,horaEntrega);
+            Pedido pedido = new Pedido();
+
+            return pedido.generarPedido(menuSeleccionado,cantidad,t,fechaEntrega,horaEntrega);
         }else
         {
             throw  new ValidacionException("El pedido tiene que ser 48 horas antes de la fecha de entrega");
@@ -102,4 +99,7 @@ public class Usuario {
 
     }
 
+    public void comprarPedido(Pedido pedido) {
+        Compra compra = new Compra(pedido,this);
+    }
 }

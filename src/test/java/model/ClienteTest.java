@@ -1,6 +1,7 @@
 package model;
 
 import desappgroupd.Menu;
+import desappgroupd.Servicio;
 import model.Exceptions.ValidacionException;
 import model.Utils.*;
 import org.junit.Before;
@@ -8,6 +9,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -67,12 +69,13 @@ public class ClienteTest {
     }
 
     @Test
-    public void unClienteCompraUnMenuDeUnServicioADomicilio() throws ValidacionException {
-        ArrayList<Menu> menus = new ArrayList<Menu>();
+    public void unClienteRealizaUnPedidoDeUnMenuDeUnServicioADomicilio() throws ValidacionException {
+        menuTest.setServicio(serviceTest);
+        List<Menu> menus = new ArrayList<Menu>();
         menus.add(menuTest);
-
-        Pedido pedido =  userTest.hacerPedido(menus,2, Usuario.TiposDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
-        assertEquals(pedido.precioFinal,15 );
+        serviceTest.setMenus((ArrayList<Menu>) menus);
+        Pedido pedido =  userTest.hacerPedido(menuTest,2, TipoDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
+        assertEquals(pedido.obtenerPrecio(),30 );
     }
 
 }

@@ -1,21 +1,25 @@
 package model;
 
 import desappgroupd.Menu;
+import desappgroupd.Servicio;
 import model.Exceptions.ValidacionException;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Proveedor extends Usuario{
-    ArrayList<Servicio> servicios;
+    private List<Servicio> servicios;
 
     public Proveedor(String nombre) {
         super(nombre);
+        this.servicios = new ArrayList<Servicio>();
     }
-    public  ArrayList<Servicio> getServicios(){
+
+    public List<Servicio> getServicios(){
         return  this.servicios;
     }
 
-    public void setServicios(ArrayList<Servicio> services){
+    public void setServicios(List<Servicio> services){
         this.servicios = services;
     }
 
@@ -49,11 +53,11 @@ public class Proveedor extends Usuario{
 
     }
 
-    public Servicio obtenerServicioEnParticular(String serviceABUscar){
+    public Servicio obtenerServicioEnParticular(String serviceABuscar){
         /*Retorno el servicio a buscar*/
         Servicio serviceARetornar = null;
         for(Servicio s : servicios){
-            if(s.getNombre().equals(serviceABUscar)){
+            if(s.getNombre().equals(serviceABuscar)){
                 serviceARetornar = s;
             }
         }
@@ -73,8 +77,5 @@ public class Proveedor extends Usuario{
         service.actualizarMenu(menuUpdate);
 
     }
-
-
-
 
 }

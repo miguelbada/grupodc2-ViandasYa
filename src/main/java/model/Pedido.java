@@ -1,20 +1,23 @@
 package model;
 
 import desappgroupd.Menu;
-import java.util.ArrayList;
+import model.Utils.TipoDeEntrega;
 import java.util.Date;
+import java.util.List;
 
 public class Pedido {
 
-    ArrayList<Menu> menuSeleccionados;
-    int cantidad;
-    Usuario.TiposDeEntrega tipoEntrega;
-    Date fechaEntrega;
-    int horaEntrega;
-    int precioFinal;
-    int tiempoDeEntrega;
+    private Menu menu;
+    private int cantidad;
+    private TipoDeEntrega tipoEntrega;
+    private Date fechaEntrega;
+    private int horaEntrega;
+    private int precioFinal;
+    private int tiempoDeEntrega;
 
-    public Pedido(){};
+    public Pedido(){
+
+    };
 
     public Date getFechaEntrega() {
         return fechaEntrega;
@@ -56,37 +59,36 @@ public class Pedido {
         this.tiempoDeEntrega = tiempoDeEntrega;
     }
 
-    public ArrayList<Menu> getMenuSeleccionados() {
-        return menuSeleccionados;
-    }
-
-    public void setMenuSeleccionados(ArrayList<Menu> menuSeleccionado) {
-        this.menuSeleccionados = menuSeleccionado;
-    }
-
-    public Usuario.TiposDeEntrega getTipoEntrega() {
+    public TipoDeEntrega getTipoEntrega() {
         return tipoEntrega;
     }
 
-    public void setTipoEntrega(Usuario.TiposDeEntrega tipoEntrega) {
+    public void setTipoEntrega(TipoDeEntrega tipoEntrega) {
         this.tipoEntrega = tipoEntrega;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
 
-    public static Pedido generarPedido(ArrayList<Menu> ms, int cant, Usuario.TiposDeEntrega t, Date fechaEntrega, int horaEntrega){
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public Pedido generarPedido(Menu m, int cant, TipoDeEntrega t, Date fechaEntrega, int horaEntrega){
         Pedido resPedido = new Pedido();
         resPedido.setCantidad(cant);
         resPedido.setFechaEntrega(fechaEntrega);
         resPedido.setHoraEntrega(horaEntrega);
-        resPedido.setMenuSeleccionados(ms);
+        resPedido.setMenu(m);
         resPedido.setTipoEntrega(t);
-        resPedido.setTiempoDeEntrega(obtenerTIempoDEEntrega(ms,t));
-        resPedido.setPrecioFinal(obtenerPrecio(ms));
+        resPedido.setTiempoDeEntrega(obtenerTIempoDEEntrega(m,t));
+       // resPedido.setPrecioFinal(obtenerPrecio());
 
         return resPedido;
     }
 
-    public static int obtenerTIempoDEEntrega(ArrayList<Menu> menus, Usuario.TiposDeEntrega t){
+    public int obtenerTIempoDEEntrega(Menu menu, TipoDeEntrega t){
         int res = 0;
         switch(t){
             case RETIRAR: /*(tiempo máximo de los menú seleccionados)*/ /* FALTA COMPLETAR ESTO, HAY QUE PREGUNTAR BIEN*/
@@ -100,9 +102,8 @@ public class Pedido {
         return res;
     }
 
-    public static int obtenerPrecio(ArrayList<Menu> ms){
-
-        return ms.stream().mapToInt(Menu::getPrecio).sum();
+    public int obtenerPrecio(){
+        return this.getMenu().getPrecio() * this.cantidad;
     }
 
 }

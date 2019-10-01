@@ -1,30 +1,42 @@
-package model;
+package desappgroupd;
 
-
-
+import com.fasterxml.jackson.annotation.JsonFormat;
 import desappgroupd.Menu;
 
+import javax.persistence.*;
 import java.util.*;
 
+@Entity
 public class Servicio {
 
-    //Long id;
-    String nombre;
-    String logo;
-    String lOcalidad;
-    String ubicacion;
-    String descripcion;
-    String dirWeb;
-    String email;
-    int telefono;
-    Map<Date,String> horariosYDias;
-    ArrayList<String> localidadDeEntregas;
-    ArrayList<Menu> menues;
+    @Id
+    private String nombre;
 
+    private String logo;
+    private String localidad;
+    private String ubicacion;
+    private String descripcion;
+    private String dirWeb;
+    private String email;
+    private int telefono;
+
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yy hh:mm:ss")
+    @ElementCollection
+    private Map<Date,String> horariosYDias;
+
+    @ElementCollection
+    private List<String> localidadDeEntregas;
+
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    private List<Menu> menus;
+
+    public Servicio() {
+
+    }
 
     public  Servicio(String name){
         this.nombre = name;
-        this.menues = new ArrayList<Menu>();
+        this.menus = new ArrayList<Menu>();
         this.localidadDeEntregas = new ArrayList<String>();
         this.horariosYDias = new HashMap<Date,String>();
     }
@@ -53,12 +65,12 @@ public class Servicio {
         this.telefono = telefono;
     }
 
-    public ArrayList<Menu> getMenues() {
-        return menues;
+    public List<Menu> getMenus() {
+        return menus;
     }
 
-    public void setMenues(ArrayList<Menu> menues) {
-        this.menues = menues;
+    public void setMenus(ArrayList<Menu> menus) {
+        this.menus = menus;
     }
 
     public String getDescripcion() {
@@ -85,7 +97,7 @@ public class Servicio {
         this.email = email;
     }
 
-    public ArrayList<String> getLocalidadDeEntregas() {
+    public List<String> getLocalidadDeEntregas() {
         return localidadDeEntregas;
     }
 
@@ -101,12 +113,12 @@ public class Servicio {
         this.horariosYDias = horariosYDias;
     }
 
-    public String getlOcalidad() {
-        return lOcalidad;
+    public String getLocalidad() {
+        return localidad;
     }
 
-    public void setlOcalidad(String lOcalidad) {
-        this.lOcalidad = lOcalidad;
+    public void setLocalidad(String localidad) {
+        this.localidad = localidad;
     }
 
     public String getUbicacion() {
@@ -119,23 +131,23 @@ public class Servicio {
 
     public void agregarMenu(Menu menuAAgregar){
 
-        this.menues.add(menuAAgregar);
+        this.menus.add(menuAAgregar);
     }
 
     public void eliminarMenu(Menu menuAEliminar){
         /* recorro los menues y solo dejo aquellos que no sean el "menuAEliminar"*/
         ArrayList<Menu> newMenues = new ArrayList<Menu>();
-        for (Menu n : this.getMenues()){
+        for (Menu n : this.getMenus()){
             if(!n.getNombre().equals(menuAEliminar.getNombre())){
                 newMenues.add(n);
             }
         }
-        setMenues(newMenues);
+        setMenus(newMenues);
     }
 
     public Integer getCantMenuesVigentes(){
         int contador = 0;
-        for (Menu m: getMenues()){
+        for (Menu m: getMenus()){
             Date menuFechaH = m.getFechasVigencias().getFechaHasta();
             if(menuFechaH.after( new Date())){
                contador++;
@@ -146,7 +158,7 @@ public class Servicio {
 
     public void actualizarMenu(Menu menuUpdate) {
 
-        for (Menu m : getMenues()){
+        for (Menu m : getMenus()){
             if(m.getNombre().equals(menuUpdate.getNombre())){
                 m.actualizarDatos(menuUpdate);
             }

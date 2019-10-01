@@ -23,7 +23,7 @@ public class Grupodc2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Menu> menues = new DataLoader().getMenues();
+        List<Menu> menues = new DataLoader().getMenus();
 
         for(Menu menu: menues) {
             menuService.addMenu(menu);

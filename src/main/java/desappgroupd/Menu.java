@@ -1,9 +1,9 @@
 package desappgroupd;
 
 import javax.persistence.*;
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Menu {
@@ -18,7 +18,8 @@ public class Menu {
     @OneToOne(cascade= CascadeType.ALL)
     private FechaVigencia fechasVigencias;
 
-    private ArrayList<Date> horariosDeENtrega;
+    @ElementCollection
+    private List<Date> horariosDeENtrega;
     private int tiemporEntregaPromedio;
     private int precio;
     private int cantidadMin;
@@ -26,6 +27,9 @@ public class Menu {
     private int cantMin2; //Opcional
     private int precioCantMin2; // Opcional
     private int cantidadMaxVentasXDia;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Servicio servicio;
 
 /*
 * Las cantidades mínimas deberán ser  mutuamente excluyentes entre los 2 segmentos.
@@ -77,11 +81,11 @@ public class Menu {
         this.fechasVigencias = fechasVigencias;
     }
 
-    public ArrayList<Date> getHorariosDeENtrega() {
+    public List<Date> getHorariosDeENtrega() {
         return horariosDeENtrega;
     }
 
-    public void setHorariosDeENtrega(ArrayList<Date> horariosDeENtrega) {
+    public void setHorariosDeENtrega(List<Date> horariosDeENtrega) {
         this.horariosDeENtrega = horariosDeENtrega;
     }
 
@@ -159,6 +163,14 @@ public class Menu {
         if(precioCantMin2 < precioCantMin){
             this.precioCantMin2 = precioCantMin2;
         }
+    }
+
+    public Servicio getServicio() {
+        return servicio;
+    }
+
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
     public  void actualizarDatos(Menu menuUpdate){
