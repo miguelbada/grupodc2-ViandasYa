@@ -1,15 +1,18 @@
 package model;
 
 import desappgroupd.Menu;
-import model.Utils.TipoDeEntrega;
+import desappgroupd.TipoDeEntrega;
+
 import java.util.Date;
-import java.util.List;
 
 public class Pedido {
 
     private Menu menu;
     private int cantidad;
+
+   // @Enumerated(value = EnumType.STRING)
     private TipoDeEntrega tipoEntrega;
+
     private Date fechaEntrega;
     private int horaEntrega;
     private int precioFinal;

@@ -1,6 +1,7 @@
 package model;
 
 import desappgroupd.Menu;
+import desappgroupd.Categoria;
 import model.Utils.MenuBuilder;
 import org.junit.Test;
 
@@ -13,7 +14,7 @@ public class MenuTest {
     public void seCreaUnMenuConCantidadesMinimasExcluyentes(){
         Menu menuTest = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
-                .withCategoria("Pizza")
+                .withCategoria(Categoria.PIZZA)
                 .withDescripcion("Test menu")
                 .withValorDelirevy(21)
                 .withCantidadMaxVentasXDia(59)
@@ -30,7 +31,7 @@ public class MenuTest {
     public void seCreaUnMenuConPrecioCantMinMayorAlPrecioPrincipal(){
         Menu menuTest = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
-                .withCategoria("Pizza")
+                .withCategoria(Categoria.PIZZA)
                 .withDescripcion("Test menu")
                 .withValorDelirevy(21)
                 .withCantidadMaxVentasXDia(59)

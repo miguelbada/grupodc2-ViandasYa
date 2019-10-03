@@ -1,5 +1,6 @@
 package model.Utils;
 
+import desappgroupd.Categoria;
 import desappgroupd.FechaVigencia;
 import desappgroupd.Menu;
 
@@ -16,7 +17,7 @@ public class MenuBuilder {
 
     private String nombre = "no Name";
     private String descripcion = "no Descripcion";
-    private String categoria = " no categoria";
+    private Categoria categoria = Categoria.OTROS;
     private int valorDelirevy = 0;
     private FechaVigencia fechasVigencias = new FechaVigencia( new Date(), new Date());
     private ArrayList<Date> horariosDeENtrega = new ArrayList<Date>();
@@ -58,7 +59,7 @@ public class MenuBuilder {
         return this;
     }
 
-    public MenuBuilder withCategoria(String categoria) {
+    public MenuBuilder withCategoria(Categoria categoria) {
         this.categoria = categoria;
         return this;
     }

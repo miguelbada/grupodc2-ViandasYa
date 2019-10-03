@@ -21,6 +21,10 @@ public class FechaVigencia {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yy hh:mm:ss")
     private Date fechaHasta;
 
+    public FechaVigencia() {
+
+    }
+
     public  FechaVigencia(Date fechaD, Date fechaH){
         this.fechaDesde = fechaD;
         this.fechaHasta = fechaH;

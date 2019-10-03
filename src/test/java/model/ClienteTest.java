@@ -1,7 +1,9 @@
 package model;
 
+import desappgroupd.Categoria;
 import desappgroupd.Menu;
 import desappgroupd.Servicio;
+import desappgroupd.TipoDeEntrega;
 import model.Exceptions.ValidacionException;
 import model.Utils.*;
 import org.junit.Before;
@@ -44,7 +46,7 @@ public class ClienteTest {
                 .build();
         menuTest = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
-                .withCategoria("Pizza")
+                .withCategoria(Categoria.PIZZA)
                 .withDescripcion("Test menu")
                 .withValorDelirevy(21)
                 .withCantidadMin(10)

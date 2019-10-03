@@ -4,6 +4,7 @@ import desappgroupd.Menu;
 import desappgroupd.Servicio;
 import model.Exceptions.ValidacionException;
 import desappgroupd.FechaVigencia;
+import desappgroupd.Categoria;
 import model.Utils.MenuBuilder;
 import model.Utils.ProveedorBuilder;
 import model.Utils.ServicioBuilder;
@@ -42,7 +43,7 @@ public class ProveedorTest {
 
         menuTest = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
-                .withCategoria("Pizza")
+                .withCategoria(Categoria.PIZZA)
                 .withDescripcion("Test menu")
                 .withValorDelirevy(21)
                 .withCantidadMin(10)
@@ -104,7 +105,7 @@ public class ProveedorTest {
 
         Menu menuUpdate = MenuBuilder.aMenu().withName("Menu test")
                 .withPrecio(15)
-                .withCategoria("Pizza")
+                .withCategoria(Categoria.PIZZA)
                 .withDescripcion("Test menu actualizado")
                 .withValorDelirevy(21)
                 .withCantidadMin(10)

@@ -12,14 +12,18 @@ public class Menu {
     private String nombre;
 
     private String descripcion;
-    private String categoria;
+
+    @Enumerated(value = EnumType.STRING)
+    private Categoria categoria;
+
     private int valorDelirevy;
 
     @OneToOne(cascade= CascadeType.ALL)
-    private FechaVigencia fechasVigencias;
+    private FechaVigencia fechasVigencias; // desde - hasta
 
     @ElementCollection
     private List<Date> horariosDeENtrega;
+
     private int tiemporEntregaPromedio;
     private int precio;
     private int cantidadMin;
@@ -28,7 +32,7 @@ public class Menu {
     private int precioCantMin2; // Opcional
     private int cantidadMaxVentasXDia;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private Servicio servicio;
 
 /*
@@ -45,16 +49,27 @@ public class Menu {
         this.horariosDeENtrega = new ArrayList<Date>();
     }
 
-    public Menu(String name, int cantMin2, int cantidadMaxVentasXDia , int cantidadMin, int precio, int precioCantMin, int precioCantMin2, int tiemporEntregaPromedio, int valorDelirevy) {
+    public Menu(String name, String descripcion, Categoria categoria, int valorDelirevy, FechaVigencia fechaVigencias, List<Date> horariosDeENtrega, int tiemporEntregaPromedio, int precio,int cantidadMin, int precioCantMin, int cantidadMaxVentasXDia, Servicio servicio) {
         this.nombre = name;
-        this.cantMin2 = cantMin2;
-        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
-        this.cantidadMin = cantidadMin;
-        this.precio = precio;
-        this.precioCantMin = precioCantMin;
-        this.precioCantMin2 = precioCantMin2;
-        this.tiemporEntregaPromedio = tiemporEntregaPromedio;
+        this.descripcion = descripcion;
+        this.categoria = categoria;
         this.valorDelirevy = valorDelirevy;
+        this.fechasVigencias = fechaVigencias;
+        this.horariosDeENtrega = horariosDeENtrega;
+        this.tiemporEntregaPromedio = tiemporEntregaPromedio;
+        this.precio = precio;
+        this.cantidadMin = cantidadMin;
+        this.precioCantMin = precioCantMin;
+        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
+        this.servicio = servicio;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getDescripcion() {
@@ -63,6 +78,14 @@ public class Menu {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public int getValorDelirevy() {
@@ -89,46 +112,6 @@ public class Menu {
         this.horariosDeENtrega = horariosDeENtrega;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCantidadMaxVentasXDia() {
-        return cantidadMaxVentasXDia;
-    }
-
-    public void setCantidadMaxVentasXDia(int cantidadMaxVentasXDia) {
-        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
-    }
-
-    public int getCantidadMin() {
-        return cantidadMin;
-    }
-
-    public void setCantidadMin(int cantidadMin) {
-        this.cantidadMin = cantidadMin;
-    }
-
-    public int getCantMin2() {
-        return cantMin2;
-    }
-
-    public void setCantMin2(int cantMin2) {
-        this.cantMin2 = cantMin2;
-    }
-
     public int getTiemporEntregaPromedio() {
         return tiemporEntregaPromedio;
     }
@@ -145,24 +128,48 @@ public class Menu {
         this.precio = precio;
     }
 
+    public int getCantidadMin() {
+        return cantidadMin;
+    }
+
+    public void setCantidadMin(int cantidadMin) {
+        this.cantidadMin = cantidadMin;
+    }
+
     public int getPrecioCantMin() {
         return precioCantMin;
     }
 
     public void setPrecioCantMin(int precioCantMin) {
-        if(precioCantMin < precio){
+        if(precioCantMin < precio) {
             this.precioCantMin = precioCantMin;
         }
+    }
+
+    public int getCantMin2() {
+        return cantMin2;
+    }
+
+    public void setCantMin2(int cantMin2) {
+        this.cantMin2 = cantMin2;
     }
 
     public int getPrecioCantMin2() {
         return precioCantMin2;
     }
 
-    public void setPrecioCantMin2(int precioCantMin2)  {
+    public void setPrecioCantMin2(int precioCantMin2) {
         if(precioCantMin2 < precioCantMin){
             this.precioCantMin2 = precioCantMin2;
         }
+    }
+
+    public int getCantidadMaxVentasXDia() {
+        return cantidadMaxVentasXDia;
+    }
+
+    public void setCantidadMaxVentasXDia(int cantidadMaxVentasXDia) {
+        this.cantidadMaxVentasXDia = cantidadMaxVentasXDia;
     }
 
     public Servicio getServicio() {
@@ -171,6 +178,7 @@ public class Menu {
 
     public void setServicio(Servicio servicio) {
         this.servicio = servicio;
+        this.servicio.agregarMenu(this);
     }
 
     public  void actualizarDatos(Menu menuUpdate){

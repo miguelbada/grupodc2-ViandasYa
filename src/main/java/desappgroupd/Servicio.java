@@ -20,7 +20,6 @@ public class Servicio {
     private String email;
     private int telefono;
 
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern="dd-MM-yy hh:mm:ss")
     @ElementCollection
     private Map<Date,String> horariosYDias;
 
@@ -39,6 +38,20 @@ public class Servicio {
         this.menus = new ArrayList<Menu>();
         this.localidadDeEntregas = new ArrayList<String>();
         this.horariosYDias = new HashMap<Date,String>();
+    }
+
+    public Servicio(String nombre, String logo, String localidad, String ubicacion, String descripcion, String dirWeb, String email, int telefono, Map<Date, String> horariosYDias, List<String> localidadDeEntregas) {
+        this.nombre = nombre;
+        this.logo = logo;
+        this.localidad = localidad;
+        this.ubicacion = ubicacion;
+        this.descripcion = descripcion;
+        this.dirWeb = dirWeb;
+        this.email = email;
+        this.telefono = telefono;
+        this.horariosYDias = horariosYDias;
+        this.localidadDeEntregas = localidadDeEntregas;
+        this.menus = new ArrayList<Menu>();
     }
 
     public String getNombre(){

@@ -2,9 +2,8 @@ package model;
 
 import desappgroupd.Menu;
 import model.Exceptions.ValidacionException;
-import model.Utils.TipoDeEntrega;
+import desappgroupd.TipoDeEntrega;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 public class Usuario {

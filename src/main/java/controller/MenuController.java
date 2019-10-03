@@ -15,8 +15,8 @@ public class MenuController {
     @Autowired
     MenuRepository menuRepository;
 
-    @GetMapping(path = "/menues")
-    public @ResponseBody Iterable<Menu> getAllMenues() {
+    @GetMapping(path = "/menus")
+    public @ResponseBody Iterable<Menu> getAllMenus() {
         return menuRepository.findAll();
     }
 
