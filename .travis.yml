@@ -3,7 +3,6 @@ dist: trusty
 sudo: required
 before_install:
   - sudo apt-get install jq
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS ViandasYa;'
   - curl -LSs $(curl -LSs https://api.github.com/repos/codacy/codacy-coverage-reporter/releases/latest | jq -r '.assets | map({content_type, browser_download_url} | select(.content_type | contains("application/java-archive"))) | .[0].browser_download_url') -o codacy-coverage-reporter-assembly.jar
 
 after_success:
@@ -16,4 +15,5 @@ install:
 deploy:
   provider: heroku:git
   api_key: 97406101-ffa3-450f-b178-fad778267205
+  app: vast-coast-54799
   edge: true # opt in to dpl v2
