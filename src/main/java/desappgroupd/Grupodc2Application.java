@@ -2,6 +2,7 @@ package desappgroupd;
 
 import controller.MenuController;
 import controller.Saludo;
+import controller.SendMailController;
 import dummy.DataLoader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -11,7 +12,7 @@ import percistence.service.MenuService;
 
 import java.util.List;
 
-@SpringBootApplication(scanBasePackageClasses = {MenuController.class, Saludo.class, MenuService.class})
+@SpringBootApplication(scanBasePackageClasses = {MenuController.class, Saludo.class, MenuService.class, SendMailController.class})
 public class Grupodc2Application implements CommandLineRunner {
 
     @Autowired
