@@ -15,5 +15,10 @@ install:
 
 deploy:
   provider: heroku:git
-  api_key: 97406101-ffa3-450f-b178-fad778267205
+  api_key:
+    secure: 97406101-ffa3-450f-b178-fad778267205
+    app: vast-coast-54799
+    on:
+      repo: https://git.heroku.com/vast-coast-54799.git
+
   edge: true # opt in to dpl v2
