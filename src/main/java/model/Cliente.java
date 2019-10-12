@@ -37,12 +37,9 @@ public class Cliente extends Usuario {
     }
 
     public void comprarPedido(Pedido pedido) {
-        Compra compra = new Compra(pedido, this);
-        int totalCompra = pedido.getPrecioFinal();
-        Proveedor proveedor = pedido.getMenu().getServicio().getProveedor();
+        Compra compra = new Compra();
 
-        compra.actualizarSaldos(totalCompra, this, proveedor);
-
+        compra.comprar(pedido, this);
     }
 
 }

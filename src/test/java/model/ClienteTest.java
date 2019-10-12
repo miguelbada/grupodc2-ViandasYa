@@ -23,14 +23,14 @@ public class ClienteTest {
 
     @Before
     public void SetUp(){
-        userTest = ClienteBuilder.aUsuario().withEMail("sara@hotmail.com")
+        userTest = ClienteBuilder.aUsuario().withEMail("migbad_7@hotmail.com")
                 .withLocalidad("Quilmes")
                 .withName("UserTest")
                 .withTelefono(456657575)
                 .build();
 
         proveedorTest =  ProveedorBuilder.aProveedor().withName("Mcdonals")
-                .withEMail("Mcdonals@tuMc.com.ar")
+                .withEMail("miguelenriquebada@gmail.com")
                 .withLocalidad("Florencio Varela")
                 .withTelefono(45678798)
                 .withCredito(100)
@@ -73,9 +73,9 @@ public class ClienteTest {
     @Test
     public void unClienteRealizaUnPedidoDeUnMenuDeUnServicioADomicilio() throws ValidacionException {
         menuTest.setServicio(serviceTest);
-        List<Menu> menus = new ArrayList<Menu>();
+        ArrayList<Menu> menus = new ArrayList<Menu>();
         menus.add(menuTest);
-        serviceTest.setMenus((ArrayList<Menu>) menus);
+        serviceTest.setMenus(menus);
         Pedido pedido =  userTest.hacerPedido(menuTest,2, TipoDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
         assertEquals(pedido.obtenerPrecio(),30 );
     }

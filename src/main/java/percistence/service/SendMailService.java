@@ -11,14 +11,17 @@ public class SendMailService {
     @Autowired
     private JavaMailSender javaMailSender;
 
-    public SimpleMailMessage mail(String from, String to, String subject, String text) {
+    public SendMailService() {
+
+    }
+
+    public void sendMail(String to, String subject, String text) {
         SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
 
-        simpleMailMessage.setFrom(from);
         simpleMailMessage.setTo(to);
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setText(text);
 
-        return simpleMailMessage;
+        javaMailSender.send(simpleMailMessage);
     }
 }

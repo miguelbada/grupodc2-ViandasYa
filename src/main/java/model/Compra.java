@@ -1,6 +1,7 @@
 package model;
 
 import model.Exceptions.ClienteSinCreditoSuficiente;
+import percistence.service.SendMailService;
 
 public class Compra {
 
@@ -8,8 +9,10 @@ public class Compra {
 
     }
 
-    public Compra(Pedido pedido, Cliente cliente) {
+    public void comprar(Pedido pedido, Cliente cliente) {
         actualizarSaldos(pedido.getPrecioFinal(), cliente, pedido.getMenu().getServicio().getProveedor());
+        notificarCompraPorMail(cliente.getEmail(), "Comprobante de compra", "Su compra se ha realizado exitosamente");
+        notificarCompraPorMail(pedido.getMenu().getServicio().getProveedor().getEmail(), "Venta", "Se ha realizado una venta exitosamente");
 
     }
 
@@ -22,7 +25,9 @@ public class Compra {
         cliente.descontarCredito(totalCompra);
     }
 
-    public void notificarCompraPorMail(Pedido pedido, Cliente cliente) {
+    public void notificarCompraPorMail(String to, String subject, String text) {
+        SendMailService mail = new SendMailService();
 
+        mail.sendMail(to, subject, text);
     }
 }
