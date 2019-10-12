@@ -4,14 +4,20 @@ import desappgroupd.Menu;
 import desappgroupd.Servicio;
 import model.Exceptions.ValidacionException;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Proveedor extends Usuario{
+@Entity
+public class Proveedor extends Usuario {
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "proveedor")
     private List<Servicio> servicios;
 
-    public Proveedor(String nombre) {
-        super(nombre);
+    public Proveedor() {
         this.servicios = new ArrayList<Servicio>();
     }
 
@@ -78,4 +84,9 @@ public class Proveedor extends Usuario{
 
     }
 
+    public void retirarCredito(int creditoASacar){
+        if(getCredito()> creditoASacar){
+            setCredito(getCredito()-creditoASacar);
+        }
+    }
 }

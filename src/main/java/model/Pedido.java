@@ -20,7 +20,7 @@ public class Pedido {
 
     public Pedido(){
 
-    };
+    }
 
     public Date getFechaEntrega() {
         return fechaEntrega;

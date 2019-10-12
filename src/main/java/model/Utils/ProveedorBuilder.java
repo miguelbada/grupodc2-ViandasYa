@@ -24,12 +24,14 @@ public class ProveedorBuilder {
 
     public Proveedor build() {
 
-        Proveedor proveedor = new Proveedor(name);
+        Proveedor proveedor = new Proveedor();
+        proveedor.setNombreYApellido(name);
         proveedor.setServicios(servicios);
-        proveedor.setCredito(credito);
-        proveedor.setLocalidadDIreccion(localidadDIreccion);
-        proveedor.seteMail(eMail);
+        proveedor.setLocalidadYDireccion(localidadDIreccion);
+        proveedor.setEmail(eMail);
         proveedor.setTelefono(telefono);
+        proveedor.setCredito(credito);
+
         return proveedor;
     }
 

@@ -2,6 +2,7 @@ package desappgroupd;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import desappgroupd.Menu;
+import model.Proveedor;
 
 import javax.persistence.*;
 import java.util.*;
@@ -28,6 +29,9 @@ public class Servicio {
 
     @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
     private List<Menu> menus;
+
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+     private Proveedor proveedor;
 
     public Servicio() {
 
@@ -178,4 +182,11 @@ public class Servicio {
         }
     }
 
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
 }

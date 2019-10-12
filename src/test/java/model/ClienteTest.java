@@ -16,14 +16,14 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ClienteTest {
-    Usuario userTest;
+    Cliente userTest;
     Proveedor proveedorTest;
     Servicio serviceTest;
     Menu menuTest;
 
     @Before
     public void SetUp(){
-        userTest = UsuarioBuilder.aUsuario().withEMail("sara@hotmail.com")
+        userTest = ClienteBuilder.aUsuario().withEMail("sara@hotmail.com")
                 .withLocalidad("Quilmes")
                 .withName("UserTest")
                 .withTelefono(456657575)
@@ -59,7 +59,7 @@ public class ClienteTest {
 
     @Test
     public void unClienteCarga100PesosASuCuenta(){
-    Usuario user = UsuarioBuilder.aUsuario().withEMail("sara@hotmail.com")
+    Cliente user = ClienteBuilder.aUsuario().withEMail("sara@hotmail.com")
                 .withLocalidad("Quilmes")
                 .withName("UserTest")
                 .withTelefono(456657575)

@@ -20,4 +20,12 @@ public class Cuenta {
     }
 
 
+    public void agregarCredito(int credito) {
+        this.credito += credito;
+    }
+
+    public void descontarCredito() {
+        this.credito -= credito;
+    }
+
 }
