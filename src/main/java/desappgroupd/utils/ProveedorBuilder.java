@@ -1,6 +1,6 @@
-package model.Utils;
+package desappgroupd.utils;
 
-import model.Proveedor;
+import desappgroupd.Proveedor;
 import desappgroupd.Servicio;
 
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package dummy;
 import desappgroupd.FechaVigencia;
 import desappgroupd.Menu;
 import desappgroupd.Servicio;
-import model.Proveedor;
+import desappgroupd.Proveedor;
 import desappgroupd.Categoria;
 
 import java.util.ArrayList;

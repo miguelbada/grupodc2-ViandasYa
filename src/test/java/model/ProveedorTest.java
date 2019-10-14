@@ -1,13 +1,10 @@
 package model;
 
-import desappgroupd.Menu;
-import desappgroupd.Servicio;
-import model.Exceptions.ValidacionException;
-import desappgroupd.FechaVigencia;
-import desappgroupd.Categoria;
-import model.Utils.MenuBuilder;
-import model.Utils.ProveedorBuilder;
-import model.Utils.ServicioBuilder;
+import desappgroupd.*;
+import desappgroupd.Exceptions.ValidacionException;
+import desappgroupd.utils.MenuBuilder;
+import desappgroupd.utils.ProveedorBuilder;
+import desappgroupd.utils.ServicioBuilder;
 import org.junit.Before;
 import org.junit.Test;
 

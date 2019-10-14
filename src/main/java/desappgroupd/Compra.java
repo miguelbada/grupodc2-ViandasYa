@@ -1,6 +1,6 @@
-package model;
+package desappgroupd;
 
-import model.Exceptions.ClienteSinCreditoSuficiente;
+import desappgroupd.Exceptions.ClienteSinCreditoSuficiente;
 import percistence.service.SendMailService;
 
 public class Compra {

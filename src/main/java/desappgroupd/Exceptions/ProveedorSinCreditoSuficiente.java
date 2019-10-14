@@ -1,4 +1,4 @@
-package model.Exceptions;
+package desappgroupd.Exceptions;
 
 public class ProveedorSinCreditoSuficiente extends RuntimeException {
     public ProveedorSinCreditoSuficiente(){

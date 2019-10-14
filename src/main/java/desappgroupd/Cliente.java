@@ -1,8 +1,6 @@
-package model;
+package desappgroupd;
 
-import desappgroupd.Menu;
-import model.Exceptions.ValidacionException;
-import desappgroupd.TipoDeEntrega;
+import desappgroupd.Exceptions.ValidacionException;
 
 import java.util.Date;
 

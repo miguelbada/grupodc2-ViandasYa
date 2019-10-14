@@ -1,7 +1,9 @@
-package model;
+package desappgroupd;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public abstract class Usuario {
@@ -11,6 +13,8 @@ public abstract class Usuario {
     private String email;
     private int telefono;
     private String localidadYDireccion;
+
+    @OneToOne(cascade= CascadeType.ALL)
     private Cuenta cuenta;
 
     public Usuario() {

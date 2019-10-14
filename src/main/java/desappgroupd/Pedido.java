@@ -1,7 +1,4 @@
-package model;
-
-import desappgroupd.Menu;
-import desappgroupd.TipoDeEntrega;
+package desappgroupd;
 
 import java.util.Date;
 

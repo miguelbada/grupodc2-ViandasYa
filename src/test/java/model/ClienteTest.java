@@ -1,17 +1,16 @@
 package model;
 
-import desappgroupd.Categoria;
-import desappgroupd.Menu;
-import desappgroupd.Servicio;
-import desappgroupd.TipoDeEntrega;
-import model.Exceptions.ValidacionException;
-import model.Utils.*;
+import desappgroupd.*;
+import desappgroupd.Exceptions.ValidacionException;
 import org.junit.Before;
 import org.junit.Test;
+import desappgroupd.utils.ClienteBuilder;
+import desappgroupd.utils.MenuBuilder;
+import desappgroupd.utils.ProveedorBuilder;
+import desappgroupd.utils.ServicioBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,8 +1,6 @@
-package model;
+package desappgroupd;
 
-import desappgroupd.Menu;
-import desappgroupd.Servicio;
-import model.Exceptions.ValidacionException;
+import desappgroupd.Exceptions.ValidacionException;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;

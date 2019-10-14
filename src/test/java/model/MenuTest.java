@@ -2,7 +2,7 @@ package model;
 
 import desappgroupd.Menu;
 import desappgroupd.Categoria;
-import model.Utils.MenuBuilder;
+import desappgroupd.utils.MenuBuilder;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

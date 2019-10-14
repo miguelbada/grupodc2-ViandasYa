@@ -1,9 +1,5 @@
 package desappgroupd;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import desappgroupd.Menu;
-import model.Proveedor;
-
 import javax.persistence.*;
 import java.util.*;
 

@@ -1,4 +1,4 @@
-package model.Exceptions;
+package desappgroupd.Exceptions;
 
 public class ClienteSinCreditoSuficiente extends RuntimeException {
     public ClienteSinCreditoSuficiente() {

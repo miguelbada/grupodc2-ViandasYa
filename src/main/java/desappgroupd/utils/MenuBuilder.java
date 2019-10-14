@@ -1,4 +1,4 @@
-package model.Utils;
+package desappgroupd.utils;
 
 import desappgroupd.Categoria;
 import desappgroupd.FechaVigencia;
