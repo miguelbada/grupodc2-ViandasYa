@@ -8,10 +8,8 @@ import desappgroupd.utils.ClienteBuilder;
 import desappgroupd.utils.MenuBuilder;
 import desappgroupd.utils.ProveedorBuilder;
 import desappgroupd.utils.ServicioBuilder;
-
 import java.util.ArrayList;
 import java.util.Date;
-
 import static org.junit.Assert.assertEquals;
 
 public class ClienteTest {
@@ -26,6 +24,7 @@ public class ClienteTest {
                 .withLocalidad("Quilmes")
                 .withName("UserTest")
                 .withTelefono(456657575)
+                .withCredito(100)
                 .build();
 
         proveedorTest =  ProveedorBuilder.aProveedor().withName("Mcdonals")
@@ -77,6 +76,25 @@ public class ClienteTest {
         serviceTest.setMenus(menus);
         Pedido pedido =  userTest.hacerPedido(menuTest,2, TipoDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
         assertEquals(pedido.obtenerPrecio(),30 );
+    }
+
+    @Test
+    public void unClienteRealizaUnPedidoDeUnMenuYLoCompra() throws ValidacionException {
+        proveedorTest.darDeAltaUnServicio(serviceTest);
+        serviceTest.setProveedor(proveedorTest);
+        menuTest.setServicio(serviceTest);
+        Pedido pedido = userTest.hacerPedido(menuTest, 1, TipoDeEntrega.DOMICILIO, new Date(2019,9,26), 1600);
+
+
+        assertEquals(pedido.getPrecioFinal(), 36);
+        assertEquals(100, userTest.getCredito());
+        assertEquals(100, proveedorTest.getCredito());
+
+        userTest.comprarPedido(pedido);
+
+        assertEquals(64, userTest.getCredito());
+        assertEquals(136, proveedorTest.getCredito());
+
     }
 
 }

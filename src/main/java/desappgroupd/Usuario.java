@@ -82,7 +82,7 @@ public abstract class Usuario {
     }
 
     public void descontarCredito(int credito) {
-        this.cuenta.descontarCredito();
+        this.cuenta.descontarCredito(credito);
     }
 
 }

@@ -16,9 +16,6 @@ public class MenuController {
     @Autowired
     MenuRepository menuRepository;
 
-    @Autowired
-    JavaMailSender javaMailSender;
-
     @GetMapping(path = "/menus")
     public @ResponseBody Iterable<Menu> getAllMenus() {
         return menuRepository.findAll();

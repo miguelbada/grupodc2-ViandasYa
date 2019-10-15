@@ -10,23 +10,21 @@ import percistence.service.SendMailService;
 public class SendMailController {
 
     @Autowired
-    JavaMailSender javaMailSender;
+    private SendMailService sendMailService;
 
-    @GetMapping("/mail")
+    @GetMapping("/testController")
     String home() {
         return "Hello Mail!";
     }
 
-    @RequestMapping(value = "/emailTest", method = RequestMethod.PUT)
+    @RequestMapping(value = "/sendEmailTest")
     public String enviarEmail(){
 
-        SimpleMailMessage msg = new SimpleMailMessage();
-        msg.setTo("miguelenriquebada07@gmail.com");
+        String to = "miguelenriquebada07@gmail.com";
+        String subject = "Testing from Spring Boot";
+        String text = "Hello World \n Spring Boot Email";
 
-        msg.setSubject("Testing from Spring Boot");
-        msg.setText("Hello World \n Spring Boot Email");
-
-        javaMailSender.send(msg);
+        sendMailService.sendMail(to, subject, text);
 
         return "Mail sent";
 

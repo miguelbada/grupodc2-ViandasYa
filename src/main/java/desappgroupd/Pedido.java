@@ -44,7 +44,7 @@ public class Pedido {
     }
 
     public int getPrecioFinal() {
-        return precioFinal;
+        return obtenerPrecio() + menu.getValorDelirevy();
     }
 
     public void setPrecioFinal(int precioFinal) {

@@ -12,7 +12,10 @@ public class SendMailService {
     private JavaMailSender javaMailSender;
 
     public SendMailService() {
+    }
 
+    public SendMailService(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
     }
 
     public void sendMail(String to, String subject, String text) {

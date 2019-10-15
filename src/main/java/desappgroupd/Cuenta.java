@@ -32,7 +32,7 @@ public class Cuenta {
         this.credito += credito;
     }
 
-    public void descontarCredito() {
+    public void descontarCredito(int credito) {
         this.credito -= credito;
     }
 
