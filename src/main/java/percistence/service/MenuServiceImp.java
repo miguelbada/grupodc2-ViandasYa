@@ -20,13 +20,13 @@ public class MenuServiceImp implements MenuService {
     }
 
     @Override
-    public List<Menu> menues() {
-        List<Menu> menuesL = new ArrayList<Menu>();
+    public List<Menu> menus() {
+        List<Menu> menuesList = new ArrayList<Menu>();
         Iterable<Menu> menues = menuRepository.findAll();
         for (Menu menu : menues) {
-            menuesL.add(menu);
+            menuesList.add(menu);
         }
 
-        return menuesL;
+        return menuesList;
     }
 }

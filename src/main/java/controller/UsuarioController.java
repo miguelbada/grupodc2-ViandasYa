@@ -59,7 +59,6 @@ public class UsuarioController {
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
-
     @DeleteMapping("/usuarios/{id}")
     void deleteUsuario(@PathVariable Long id) {
         /* Delete a user by id */

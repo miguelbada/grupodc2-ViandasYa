@@ -5,14 +5,14 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import percistence.service.SendMailService;
+import percistence.service.SendMailServiceImp;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class Grupodc2ApplicationTests {
 
     @Autowired
-    private SendMailService sendMailService;
+    private SendMailServiceImp sendMailService;
 
     @Test
     public void sendMailTest() {

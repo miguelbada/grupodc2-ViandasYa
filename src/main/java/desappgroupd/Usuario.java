@@ -9,8 +9,10 @@ import javax.persistence.OneToOne;
 @Entity
 public class Usuario {
 
-    private @Id @GeneratedValue Long id;
+    @Id
+    @GeneratedValue Long id;
     private String nombreYApellido;
+
     private String email;
     private int telefono;
     private String localidadYDireccion;

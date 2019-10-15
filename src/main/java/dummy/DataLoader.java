@@ -1,10 +1,7 @@
 package dummy;
 
-import desappgroupd.FechaVigencia;
-import desappgroupd.Menu;
-import desappgroupd.Servicio;
-import desappgroupd.Proveedor;
-import desappgroupd.Categoria;
+import desappgroupd.*;
+import desappgroupd.utils.ProveedorBuilder;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,14 +11,18 @@ import java.util.List;
 public class DataLoader {
     private List<Menu> menus;
     private List<Proveedor> proveedores;
+    private List<Cliente> clientes;
 
     public DataLoader() {
         this.menus = new ArrayList<Menu>();
         this.proveedores = new ArrayList<Proveedor>();
-        this.generarMenues();
+        this.clientes = new ArrayList<Cliente>();
+        this.generarMenus();
+        this.generarProveedores();
+        this.generarClientes();
     }
 
-    public void generarMenues() {
+    public void generarMenus() {
 
         List<Date> horarios1 = new ArrayList<Date>();
         List<Date> horarios2 = new ArrayList<Date>();
@@ -57,10 +58,34 @@ public class DataLoader {
     }
 
     public List<Menu> getMenus() {
-        return this.menus;
+        return menus;
     }
 
+    public void generarProveedores() {
 
+        Proveedor proveedorMiguel = ProveedorBuilder
+                .aProveedor()
+                .withName("Miguel Bada")
+                .withEMail("miguelenriquebada07@gmail.com")
+                .withTelefono(123456)
+                .withLocalidad("Quilmes")
+                .withCredito(0)
+                .build();
 
+        this.proveedores.add(proveedorMiguel);
+
+    }
+
+    public List<Proveedor> getProveedores() {
+        return proveedores;
+    }
+
+    public void generarClientes() {
+
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
 }
 

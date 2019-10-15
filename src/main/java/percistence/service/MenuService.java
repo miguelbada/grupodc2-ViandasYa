@@ -5,6 +5,7 @@ import desappgroupd.Menu;
 import java.util.List;
 
 public interface MenuService {
+
     void addMenu(Menu menu);
-    List<Menu> menues();
+    List<Menu> menus();
 }

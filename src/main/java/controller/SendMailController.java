@@ -1,16 +1,14 @@
 package controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
-import percistence.service.SendMailService;
+import percistence.service.SendMailServiceImp;
 
 @RestController
 public class SendMailController {
 
     @Autowired
-    private SendMailService sendMailService;
+    private SendMailServiceImp sendMailService;
 
     @GetMapping("/testController")
     String home() {

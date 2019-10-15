@@ -1,9 +1,7 @@
 package desappgroupd;
 
 import desappgroupd.Exceptions.ClienteSinCreditoSuficiente;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import percistence.service.SendMailService;
+import percistence.service.SendMailServiceImp;
 
 public class Compra {
 
@@ -28,7 +26,7 @@ public class Compra {
     }
 
     public void notificarCompraPorMail(String to, String subject, String text) {
-        SendMailService mail = new SendMailService();
+        SendMailServiceImp mail = new SendMailServiceImp();
 
         mail.sendMail(to, subject, text);
     }
