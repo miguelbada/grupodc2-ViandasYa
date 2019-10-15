@@ -3,12 +3,13 @@ package desappgroupd;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
 import javax.persistence.OneToOne;
 
 @Entity
-public abstract class Usuario {
+public class Usuario {
 
-    @Id
+    private @Id @GeneratedValue Long id;
     private String nombreYApellido;
     private String email;
     private int telefono;
@@ -27,6 +28,14 @@ public abstract class Usuario {
         this.telefono = telefono;
         this.localidadYDireccion = localidadYDireccion;
         this.cuenta = new Cuenta();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombreYApellido() {
