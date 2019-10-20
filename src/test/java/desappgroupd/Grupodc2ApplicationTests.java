@@ -16,7 +16,7 @@ public class Grupodc2ApplicationTests {
 
     @Test
     public void sendMailTest() {
-        sendMailService.sendMail("miguelenriquebada07@gmail.com", "ViandasYa", "Es un test de comprobante de compra");
+        //sendMailService.sendMail("miguelenriquebada07@gmail.com", "ViandasYa", "Es un test de comprobante de compra");
     }
 
 }

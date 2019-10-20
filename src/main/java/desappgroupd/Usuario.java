@@ -13,6 +13,7 @@ public class Usuario {
     @GeneratedValue Long id;
     private String nombreYApellido;
 
+    private String password;
     private String email;
     private int telefono;
     private String localidadYDireccion;
@@ -46,6 +47,14 @@ public class Usuario {
 
     public void setNombreYApellido(String nombreYApellido) {
         this.nombreYApellido = nombreYApellido;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

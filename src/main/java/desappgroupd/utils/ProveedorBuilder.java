@@ -17,6 +17,7 @@ public class ProveedorBuilder {
     private String name = "no name";
     private String eMail = "no email";
     private int telefono = 0;
+    private String pass = " no pass";
     private String localidadDIreccion = "no localidad";
     private int credito = 0;
     private ArrayList<Servicio> servicios = new ArrayList<Servicio>();
@@ -31,6 +32,7 @@ public class ProveedorBuilder {
         proveedor.setEmail(eMail);
         proveedor.setTelefono(telefono);
         proveedor.setCredito(credito);
+        proveedor.setPassword(pass);
 
         return proveedor;
     }
@@ -53,6 +55,11 @@ public class ProveedorBuilder {
         return this;
     }
 
+
+    public ProveedorBuilder withPassword(final String pass){
+        this.pass = pass;
+        return this;
+    }
 
     public ProveedorBuilder withCredito(final int credito) {
 

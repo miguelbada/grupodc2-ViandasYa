@@ -3,6 +3,7 @@ package controller;
 
 import desappgroupd.Exceptions.UsuarioNotFoundException;
 import desappgroupd.Usuario;
+import desappgroupd.UsuarioLogin;
 import desappgroupd.UsuarioRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,5 +64,14 @@ public class UsuarioController {
     void deleteUsuario(@PathVariable Long id) {
         /* Delete a user by id */
         repository.deleteById(id);
+    }
+
+    @PostMapping("/usuarios/login")
+    Usuario loginUsuario(@RequestBody UsuarioLogin newUsuarioLogin) {
+
+       List<Usuario> usuarios =  (List<Usuario>) repository.findAll();
+       Usuario user = UsuarioLogin.getUsuarioByNameAndPass(newUsuarioLogin,usuarios);
+        System.out.print("Usuario con Email: " + user);
+        return user;
     }
 }

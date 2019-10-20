@@ -70,6 +70,7 @@ public class DataLoader {
                 .withTelefono(123456)
                 .withLocalidad("Quilmes")
                 .withCredito(0)
+                .withPassword("Boquita")
                 .build();
 
         this.proveedores.add(proveedorMiguel);
