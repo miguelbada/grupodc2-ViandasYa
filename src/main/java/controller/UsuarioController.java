@@ -65,7 +65,7 @@ public class UsuarioController {
         /* Delete a user by id */
         repository.deleteById(id);
     }
-
+    @CrossOrigin
     @PostMapping("/usuarios/login")
     Usuario loginUsuario(@RequestBody UsuarioLogin newUsuarioLogin) {
 
