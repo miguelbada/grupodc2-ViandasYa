@@ -1,10 +1,11 @@
 ---------------------------------------------------------------------
-TAG 1.0 -- Entrega 1
+TAG 2.0 -- Entrega 2
 ---------------------------------------------------------------------
 NEW FEATURES:
 * Modelo testeado.
 * Se persiste con Hibernate la clase Menu.
-* Endpoint "/menues", muestra una lista de menues cargados en el sistema.
+* Se cambia la base de datos de mysql a H2 Database.
+* Vista de login de usuario.
 
 
 NOTES:
@@ -14,7 +15,9 @@ NOTES:
 * Falta implementar las puntuaciones de los clientes cuando se efectua la compra de un menu.
 * Se debe realizar la baja de menu o de proveedor por puntuaciones bajas.
 * Falta las transacciones cuando se efectua la compra.
+* Falta implementar carga/retiro de credito.
+* Falta diseñar las vistas para comprar un menu y para busqueda de menus.
+* Implementar el social login con OAuth.
 
 KNOWN ISSUES:
-* La integracion de codacy con travis esta andando mal, no reporta el porcentaje de covertura de los test.
-* Heroku esta dando un error y no muestra la pagina.
+* La integración de Angular con el modelo esta llevando más tiempo de lo estimado.
