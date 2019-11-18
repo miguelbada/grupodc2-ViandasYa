@@ -21,13 +21,15 @@ public class UsuarioController {
 
     // Aggregate root
 
-    @GetMapping("/usuarios")
+    @CrossOrigin
+    @GetMapping("/api/usuarios")
     List<Usuario> getAll() {
         /*get all users from repository of Users*/
         return (List<Usuario>) repository.findAll();
     }
 
-    @PostMapping("/usuarios")
+    @CrossOrigin
+    @PostMapping("/api/usuarios")
     Usuario newUsuario(@RequestBody Usuario newUsuario) {
         /* Create a new user */
         return repository.save(newUsuario);
@@ -36,7 +38,8 @@ public class UsuarioController {
 
     // Single item
 
-    @GetMapping("/usuarios/{id}")
+    @CrossOrigin
+    @GetMapping("/api/usuarios/{id}")
     Usuario getOne(@PathVariable Long id) {
         /* get one user by id*/
 
@@ -44,7 +47,8 @@ public class UsuarioController {
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
-    @PutMapping("/usuarios/{id}")
+    @CrossOrigin
+    @PutMapping("/api/usuarios/{id}")
     Usuario replaceUsuario(@RequestBody Usuario newUsuario, @PathVariable Long id) {
      /*Update all attributes of a user by id */
         return repository.findById(id)
@@ -60,13 +64,13 @@ public class UsuarioController {
                 .orElseThrow(() -> new UsuarioNotFoundException(id));
     }
 
-    @DeleteMapping("/usuarios/{id}")
+    @DeleteMapping("/api/usuarios/{id}")
     void deleteUsuario(@PathVariable Long id) {
         /* Delete a user by id */
         repository.deleteById(id);
     }
     @CrossOrigin
-    @PostMapping("/usuarios/login")
+    @PostMapping("/api/usuarios/login")
     Usuario loginUsuario(@RequestBody UsuarioLogin newUsuarioLogin) {
 
        List<Usuario> usuarios =  (List<Usuario>) repository.findAll();
