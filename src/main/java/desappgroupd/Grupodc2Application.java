@@ -1,5 +1,6 @@
 package desappgroupd;
 
+import controller.CorsFilter;
 import controller.MenuController;
 import controller.Saludo;
 import controller.SendMailController;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
 import percistence.service.MenuService;
 import percistence.service.ProveedorService;
 import java.util.List;
@@ -25,6 +28,14 @@ public class Grupodc2Application implements CommandLineRunner {
         SpringApplication.run(Grupodc2Application.class, args);
     }
 
+    @Bean
+    public FilterRegistrationBean corsFilterRegistration(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new CorsFilter());
+        registrationBean.setName("CORS FIlter");
+        registrationBean.addUrlPatterns("/*");
+        registrationBean.setOrder(1);
+        return registrationBean;
+    }
     @Override
     public void run(String... args) throws Exception {
         DataLoader data = new DataLoader();

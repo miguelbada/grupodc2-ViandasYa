@@ -21,8 +21,7 @@ public class UsuarioController {
 
     // Aggregate root
 
-    @CrossOrigin
-    @GetMapping("/api/usuarios")
+    @GetMapping("/usuarios")
     List<Usuario> getAll() {
         /*get all users from repository of Users*/
         return (List<Usuario>) repository.findAll();
