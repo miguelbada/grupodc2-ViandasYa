@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-
 import javax.websocket.server.PathParam;
 
 @RestController
@@ -20,7 +18,7 @@ public class MenuController {
     MenuRepository menuRepository;
 
     @CrossOrigin
-    @GetMapping(path = "api/menus")
+    @GetMapping(path = "menus")
     public @ResponseBody
     Iterable<Menu> getAllMenus() {
         return menuRepository.findAll();

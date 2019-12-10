@@ -1,10 +1,8 @@
 package desappgroupd;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Usuario {
@@ -21,8 +19,12 @@ public class Usuario {
     @OneToOne(cascade= CascadeType.ALL)
     private Cuenta cuenta;
 
+    @ManyToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Pedido> pedidos;
+
     public Usuario() {
         this.cuenta = new Cuenta();
+        this.pedidos = new ArrayList<Pedido>();
     }
 
     public Usuario(String nombreYApellido, String email, int telefono, String localidadYDireccion) {
@@ -105,4 +107,15 @@ public class Usuario {
         this.cuenta.descontarCredito(credito);
     }
 
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void agregarPedido(Pedido pedido) {
+        pedidos.add(pedido);
+    }
+
+    public void setPedido(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 }

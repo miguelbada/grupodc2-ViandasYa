@@ -23,10 +23,10 @@ public class Servicio {
     @ElementCollection
     private List<String> localidadDeEntregas;
 
-    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "servicio", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Menu> menus;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
      private Proveedor proveedor;
 
     public Servicio() {

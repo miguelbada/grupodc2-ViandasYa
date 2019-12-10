@@ -1,6 +1,7 @@
 package dummy;
 
 import desappgroupd.*;
+import desappgroupd.utils.ClienteBuilder;
 import desappgroupd.utils.ProveedorBuilder;
 
 import java.util.ArrayList;
@@ -42,7 +43,7 @@ public class DataLoader {
         List<String> localidadDeEntrega = new ArrayList<String>();
         localidadDeEntrega.add("Quilmes");
 
-        Servicio servicio = new Servicio("Mc", "logoDeMC", "Quilmes", "12df5454gg2sds", "Es un servicio de comidas rapidas", "mc.com.ar", "mv@gmail.com.ar", 42544444, horariosYDias, localidadDeEntrega);
+        Servicio servicio = new Servicio("Mc", "logoDeMC", "Quilmes", "12df5454gg2sds", "Es un servicio de comidas rapidas", "mc.com.ar", "migbad_7@hotmail.com", 42544444, horariosYDias, localidadDeEntrega);
 
         Menu menu1 = new Menu("Menu infantil cajita minion", "Menu infantil", Categoria.HAMBURGUESA, 50, fechaVigencia1, horarios1, 35, 300, 1, 295, 200, servicio);
         Menu menu2 = new Menu("Combo nuggets", "Combo", Categoria.HAMBURGUESA, 50, fechaVigencia2, horarios2, 35, 310, 1, 305, 200, servicio);
@@ -82,6 +83,17 @@ public class DataLoader {
     }
 
     public void generarClientes() {
+
+        Cliente clienteMiguel = ClienteBuilder
+                .aUsuario()
+                .withName("Juan Perez")
+                .withEMail("migbad_7@hotmail.com")
+                .withTelefono(78910)
+                .withLocalidad("Bernal")
+                .withCredito(500)
+                .build();
+
+        this.clientes.add(clienteMiguel);
 
     }
 

@@ -1,5 +1,8 @@
 package controller;
 
+import desappgroupd.Cliente;
+import desappgroupd.Compra;
+import desappgroupd.Pedido;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import percistence.service.SendMailServiceImp;
@@ -15,12 +18,12 @@ public class SendMailController {
         return "Hello Mail!";
     }
 
-    @RequestMapping(value = "/sendEmailTest")
-    public String enviarEmail(){
+    @RequestMapping(value = "/sendEmail")
+    public String enviarEmail(String to, String subject, String text) {
 
-        String to = "miguelenriquebada07@gmail.com";
+        /*String to = "miguelenriquebada07@gmail.com";
         String subject = "Testing from Spring Boot";
-        String text = "Hello World \n Spring Boot Email";
+        String text = "Hello World \n Spring Boot Email";*/
 
         sendMailService.sendMail(to, subject, text);
 
@@ -28,6 +31,12 @@ public class SendMailController {
 
     }
 
+    @RequestMapping(value = "sendEmailTest")
+    public String enviarEmailTest() {
 
+        enviarEmail("miguelenriquebada07@gmail.com", "Testing from Spring Boot", "Hello World \n Spring Boot Email");
+
+        return "sent successfully";
+    }
 
 }

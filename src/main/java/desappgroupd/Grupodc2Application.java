@@ -11,11 +11,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import percistence.service.ClienteService;
 import percistence.service.MenuService;
 import percistence.service.ProveedorService;
 import java.util.List;
 
-@SpringBootApplication(scanBasePackageClasses = {MenuController.class, Saludo.class, MenuService.class,ProveedorService.class, SendMailController.class})
+@SpringBootApplication(scanBasePackageClasses = {MenuController.class, Saludo.class, MenuService.class,ProveedorService.class, ClienteService.class,
+                                                SendMailController.class})
 public class Grupodc2Application implements CommandLineRunner {
 
     @Autowired
@@ -23,6 +25,9 @@ public class Grupodc2Application implements CommandLineRunner {
 
     @Autowired
     ProveedorService proveedorService;
+
+    @Autowired
+    ClienteService clienteService;
 
     public static void main(String[] args) {
         SpringApplication.run(Grupodc2Application.class, args);
@@ -42,6 +47,7 @@ public class Grupodc2Application implements CommandLineRunner {
 
         List<Menu> menues = data.getMenus();
         List<Proveedor> proveedores = data.getProveedores();
+        List<Cliente> clientes = data.getClientes();
 
         for(Menu menu: menues) {
             menuService.addMenu(menu);
@@ -49,6 +55,10 @@ public class Grupodc2Application implements CommandLineRunner {
 
         for(Proveedor proveedor: proveedores) {
             proveedorService.addProveedor(proveedor);
+        }
+
+        for(Cliente cliente: clientes) {
+            clienteService.addCliente(cliente);
         }
 
     }

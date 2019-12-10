@@ -1,10 +1,18 @@
 package desappgroupd;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 public class Pedido {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @OneToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     private Menu menu;
+
     private int cantidad;
 
    // @Enumerated(value = EnumType.STRING)
@@ -104,6 +112,16 @@ public class Pedido {
 
     public int obtenerPrecio(){
         return this.getMenu().getPrecio() * this.cantidad;
+    }
+
+    public String detalleDePedido() {
+        return "Día: "+ getFechaEntrega() + "\n" +
+                "Menu: " + menu.getNombre() + "\n" +
+                "Cantidad: " + getCantidad() + "\n" +
+                "Tipo de entrega: " + getTipoEntrega() + "\n" +
+                "Hora de entrega: " +  getHoraEntrega() + "\n" +
+                "Tiempo de entrega: " + getTipoEntrega() + "\n" +
+                "Precio: " + getPrecioFinal() + "\n";
     }
 
 }

@@ -1,12 +1,10 @@
 package controller;
 
-
 import desappgroupd.Exceptions.UsuarioNotFoundException;
 import desappgroupd.Usuario;
 import desappgroupd.UsuarioLogin;
 import desappgroupd.UsuarioRepository;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

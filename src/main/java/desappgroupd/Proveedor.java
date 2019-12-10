@@ -8,7 +8,6 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Entity
 public class Proveedor extends Usuario {
 
